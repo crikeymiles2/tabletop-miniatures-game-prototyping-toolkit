@@ -1,4 +1,4 @@
-/* GASLANDS LEGACY */
+/* PROTOTYPING TOOLKIT */
 
 /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -29,20 +29,20 @@ select, input  {
 	text-decoration: none;
 }
 
-body.clue p.fluff,
-body.clue p span.fluff
-{
-	font-family: 'Special Elite', sans-serif;
-	font-style: italic;
-}
-
 footer {
-	padding-bottom: 40px;
+	margin: 40px 0;
+	padding: 40px 0;
 }
 
-.vsmall {
-	font-size: 70%
-	}
+.code
+{
+	font-family: 'VT323', monospace;
+	background-color:yellow;
+	color:#333333;
+}
+
+.book-image { width: 140px;}
+
 
 /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -59,10 +59,6 @@ body
 body a { color: grey; }
 body h1 a { color: black; }
 
-table.fields th p
-{
-	color: black;
-}
 
 body div.divider { border-top: 2px solid grey; }
 
@@ -101,12 +97,6 @@ body.print button,
 }
 */
 
-button:active
-{
-	background-color: #242323;
-	color: white;
-	border: 2px solid grey;
-}
 
 
 /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -128,6 +118,7 @@ table.fields th { width: 122px; }
 	}
 	
 	table.fields th { width: 180px; }
+	.book-image { width: 140px;}
 }
 
 @media only screen and (min-width: 768px)
@@ -148,6 +139,7 @@ table.fields th { width: 122px; }
 	table.fields th { 
 		width: 185px; 
 	}
+	.book-image { width: 260px;}
 
 }
 
@@ -172,16 +164,16 @@ h1 a {
 	text-decoration: none;
 }
 
-h1#vehicle-title {
-	margin-bottom: -12px;
+
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* TABLES */
+
+table.fields th p
+{
+	color: black;
 }
-
-
-
-/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-/* VEHICLE STATS */
-
 
 th, td { 
 	vertical-align: top; 
@@ -222,12 +214,25 @@ h2 { margin: 1em 0 0.3em 0; }
 h3 { margin: 0.8em 0 0.3em 0; }
 h4 { font-size: 70%; }
 .small { font-size: 80%; }
+.vsmall { font-size: 70% }
 .centred { text-align: center; }
 .caps { text-transform: uppercase; }
 
 div.divider {
 	padding: 20px 0 0 0;
     margin: 20px 0 0 0;
+}
+
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* BUTTON */
+
+button:active
+{
+	background-color: #242323;
+	color: white;
+	border: 2px solid grey;
 }
 
 
@@ -240,9 +245,6 @@ button, select, input
 	font-size: 100%;
 	padding: 3px 6px;
 }
-
-
-
 button
 {
 	font-size: 150%;
@@ -250,67 +252,7 @@ button
 	cursor: pointer;
 }
 
-
-
 button#generate {
 	margin-top: 10px;
 }
 
-
-/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-/* MUTATIONS */
-
-div#mutations { margin-bottom: 20px; }
-div#mutations p { margin: 15px 0px; }
-
-#mutations button
-{
-	font-size: 100%;
-}
-
-p.unlocked-mutation
-{
-	padding-left: 15px;
-	border-left: 2px solid black;
-}
-
-
-
-/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-/* CLUES */
-
-
-body.clue p
-{
-	font-weight: 100;
-	line-height: 1.3em;
-}
-
-body.clue p.fluff
-{
-	line-height: 1.5em;
-	font-size: 90%; 
-	margin-bottom: 20px;
-}
-
-
-body.clue p.error
-{
-	color: red;
-	font-size: 70%;
-	padding: 5px 0;
-}
-
-
-
-.cluedump {
-	font-weight: 100;
-	line-height: 1.3em;
-	text-align: left;
-	font-size:80%;
-}
-ol.cluedump li {
-	margin-left: 25px;
-	}

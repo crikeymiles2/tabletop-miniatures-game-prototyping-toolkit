@@ -6,7 +6,7 @@
 	<meta name="description" content="Write a new tabletop miniatures game in seconds.">
 	<meta property="og:site_name" content="Fundamentals of Tabletop Miniatures Game Design" />
 	<meta property="og:image" content="" />
-	<link href="https://fonts.googleapis.com/css?family=Orbitron|Press+Start+2P|Quantico|Russo+One|VT323|Roboto" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Orbitron|Special+Elite|Quantico|Russo+One|VT323|Roboto" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<link rel="stylesheet" type="text/css" href="styles.css">  
 	
@@ -36,33 +36,18 @@
 
 <p class="button"><a href="https://planetsmashergames.com/fundamentals/prototyping-toolkit/">Roll up a new game</a></p>
 
+<br/><br/><br/>
 <h3>What is this?</h3>
 <div style="float:right;margin:0 0 15px 20px">
-	<img src="FunTopMockUp260.jpg" />
-	<p class="vsmall" style="width:260px;text-align:center;"><a>Buy our book!</a></p>
+	<a href="https://planetsmashergames.com/fundamentals"><img src="FunTopMockUp260.jpg" class="book-image" /></a>
+	<p class="vsmall" style="text-align:center;" class="book-image"><a href="https://planetsmashergames.com/fundamentals">Buy our book!</a></p>
 </div>
 <p>This toolkit is provided partly as a rapid prototyping tool, allowing you to generate the skeleton of a tabletop miniatures game in moments. It also exists to make the point that if a design simply reorganises common mechanical tropes into a new order, it is unlikely to be an effective design. Effective game design tightly integrates its core ideas with mechanics to shape the players' experiences. It builds on the ideas found in our book: <em>The Fundamentals of Tabletop Miniatures Game Design</em>.</p>
 <p>This toolkit doesn’t create interesting games, it creates functional ones. It can be used as a starting point or as an inspiration.</p>
 <h3 class="vsmall" >Public Domain</h3>
 <p class="vsmall" xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">This toolkit <a property="dct:title" rel="cc:attributionURL" href="https://planetsmashergames.com/fundamentals/prototyping-toolkit/">Tabletop Miniatures Game Prototyping Toolkit</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://ruleofcarnage.com">Glenn Ford and Mike Hutchinson</a> is offered in the public domain via <a href="https://creativecommons.org/publicdomain/zero/1.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC0 1.0 Universal<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/zero.svg?ref=chooser-v1" alt=""></a>.  We waive all of our rights to the work worldwide under copyright law, including all related and neighboring rights, to the extent allowed by law.
-You can copy, modify, distribute and perform either the output or the code of this toolkit, even for commercial purposes, with no permission or attribution required. Download the code on <a>Github</a>.</p>
-
-
-<!--p><a href="https://planetsmashergames.com/fundamentals/prototyping-toolkit/?game=<?php echo numHash(time(),8); ?>">Roll up a new game</a></p-->
-
-
-<!--p><a href="https://planetsmashergames.com/fundamentals/prototyping-toolkit/?type=skirmish&game=<?php echo numHash(time(),8); ?>">Create a new skirmish game</a></p>
-<!--p><a href="https://planetsmashergames.com/fundamentals/prototyping-toolkit/?type=massbattle&game=<?php echo numHash(time(),8); ?>">Create a new mass battle game</a></p>
-<!--p><a href="https://planetsmashergames.com/fundamentals/prototyping-toolkit/?type=vehicle&game=<?php echo numHash(time(),8); ?>">Create a new vehicle game</a></p-->
-<?php
-// 	IF ($_GET['type'] == 'massbattle') { 
-//			$game_type = 'massbattle'; 
-//		} ELSEIF ($_GET['type'] == 'vehicle') {
-//		$game_type = 'vehicle'; 
-//		} ELSE {
-//		$game_type = 'skirmish'; 
-//		}
-?>
+You can copy, modify, distribute and perform either the output or the code of this toolkit, even for commercial purposes, with no permission or attribution required. Download the code on <a hre="https://github.com/crikeymiles2/tabletop-miniatures-game-prototyping-toolkit" target="_blank">Github</a>.</p>
+<br/><br/><br/>
 
 
 
@@ -83,11 +68,31 @@ function numHash($str, $len=null)
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 
-$game_rolls = numHash(time(),8);
-IF (ISSET($_GET['game'])) { $game_rolls = substr($_GET['game'],0,8); }
+$number_of_dice_rolls_required = 10;
+$game_rolls = numHash(time(),$number_of_dice_rolls_required);
+IF (ISSET($_GET['game'])) { $game_rolls = substr($_GET['game'],0,$number_of_dice_rolls_required); }
 $dice_number = 0;
 
 ?>
+
+
+<!--p><a href="https://planetsmashergames.com/fundamentals/prototyping-toolkit/?game=<?php echo numHash(time(),$number_of_dice_rolls_required); ?>">Roll up a new game</a></p-->
+
+
+<!--p><a href="https://planetsmashergames.com/fundamentals/prototyping-toolkit/?type=skirmish&game=<?php echo numHash(time(),$number_of_dice_rolls_required); ?>">Create a new skirmish game</a></p>
+<!--p><a href="https://planetsmashergames.com/fundamentals/prototyping-toolkit/?type=massbattle&game=<?php echo numHash(time(),$number_of_dice_rolls_required); ?>">Create a new mass battle game</a></p>
+<!--p><a href="https://planetsmashergames.com/fundamentals/prototyping-toolkit/?type=vehicle&game=<?php echo numHash(time(),$number_of_dice_rolls_required); ?>">Create a new vehicle game</a></p-->
+<?php
+// 	IF ($_GET['type'] == 'massbattle') { 
+//			$game_type = 'massbattle'; 
+//		} ELSEIF ($_GET['type'] == 'vehicle') {
+//		$game_type = 'vehicle'; 
+//		} ELSE {
+//		$game_type = 'skirmish'; 
+//		}
+?>
+
+
 
 
 <h1>Your new miniatures game is called: #<?php echo $game_rolls; ?></h1>
@@ -130,8 +135,7 @@ if ($roll <= 4) {
 ?>
 
 <h2>Stats</h2>
-<?php // TODO: Add alternative names for the stats?
-?>
+<p class="code">TODO: Add alternative names for the stats?</p>
 <p>Units in this game are defined by the following stats:</p>
 <ul>
  <li><strong>Speed:</strong> the maximum distance they can travel in a single Move Action</li>
@@ -145,8 +149,7 @@ if ($roll <= 4) {
 
 
 <h2>Resolution Mechanic</h2>
-<?php // TODO: Add alternative resolution systems
-?>
+<p class="code">TODO: Add alternative resolution systems</p>
 <p>When called upon to make a Difficulty [x]+ Stat Test, the unit's controller rolls a number of D6 equal to the named stat. Each dice that rolls equal to or higher than the difficult [x] is a success. The Stat Test is a Success If the controller rolls a one or more successes, else it is a Failure. If not stated, the Difficulty is 4+ (requiring dice rolls of 4+ for successes).</p>
 
 <h2>Game Tokens</h2>
@@ -208,6 +211,7 @@ if ($roll <= 3) {
 		?>
 		<li>End Phase</li>
 	</ol>
+<p class="code">TODO: Add option for phased turns</p>
 
 
 <h2>Initiative</h2>
@@ -303,6 +307,7 @@ if ($roll <= 3) {
 	<li><strong>Close Action:</strong> target an enemy model with one of this unit's Close Actions</li>
 	<li><strong>Ranged Action:</strong> target an enemy model with one of this unit's Ranged Actions</li>
 	<li><strong>Special Action:</strong> perform a one of this unit's Special Actions</li>
+	<li><strong>Focus Action:</strong> this unit reduces the Difficulty of its next test by 1, until the end of its activation.</li>
 </ul>
 
 
@@ -369,31 +374,45 @@ if ($roll <= 3) {
 
 
 <h2>Morale</h2>
-When a friendly unit is removed from play within 6" and line of sight of a unit, that unit must make a Difficulty 4+ Morale Test. If they fail it, they must ... TODO
+<p class="code">TODO</p>
+<p>When a friendly unit is removed from play within 6" and line of sight of a unit, that unit must make a Difficulty 4+ Morale Test. If they fail it, they must ... TODO</p>
 
 
 <h2>Terrain</h2>
-
+<p class="code">TODO</p>
 
 <h2>Force selection</h2>
-
+<p class="code">TODO</p>
 
 <h2>Deployment</h2>
+<p class="code">TODO</p>
 
-
-<h2>TODO Game Length</h2>
-
-The game ends at the end of round <?php echo rand(3,10);?>.
-
-At the start of a round a player Rolls and adds the number of rounds that have passed, and the total is nine or more.
-
-When the game end, the player who has the most victory points is the winner.
+<h2>Game Length</h2>
+<?php
+$roll = substr($game_rolls,$dice_number++,1);
+if ($roll <= 5) {
+	echo '<p><strong>[Fixed Round Limit]</strong> The game ends at the end of round ' . rand(3,10) . '.</p>';
+} elseif ($roll <= 8) {	
+	echo '<p><strong>[Uncertain Round Limit (3-10)]</strong> As the final act in each End Phase, the First Player rolls a D6 and adds the current Round Number. If the total is 9 or more, the game ends.</p>';
+} else {	
+	echo '<p><strong>[Uncertain Round Limit (5-7)]</strong> At the end of Round 5, the First Player rolls a D6: the game ends on a 5+. At the end of Round 6 it ends on a 3+, and the game automatically ends at the end of Round 7.</p>';
+}
+?>
 
 
 <h2>Objectives</h2>
-
+<p class="code">TODO</p>
 
 <h2>Victory</h2>
+<p>When the game end, the player who has the most victory points is the winner.</p>
+
+<br/><br/><br/>
+<p class="code">DEBUG: The current number of dice rolls requires is: <?php echo $dice_number; ?></p>
+
+<footer>
+<p class="vsmall">Version 0.1 (Alpha). Rules text by <a href="https://www.manokentgames.com/">Glenn Ford</a> and <a href="https://planetsmashergames.com">Mike Hutchinson</a>. <a hre="https://github.com/crikeymiles2/tabletop-miniatures-game-prototyping-toolkit" target="_blank">Terrible PHP</a> by Mike. Buy our book, <a href="https://planetsmashergames.com/fundamentals">The Fundamentals of Tabletop Miniatures Game Design</a>.</p>
+</footer>
+
 
 
 </div>
