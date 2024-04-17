@@ -1,5 +1,5 @@
 # Tabletop Miniatures Game Prototyping Toolkit
-Write a new tabletop miniatures game in seconds.
+Write a new tabletop miniatures game in seconds. [Do it now!](https://planetsmashergames.com/fundamentals/prototyping-toolkit)
 
 ## What is this?
 
