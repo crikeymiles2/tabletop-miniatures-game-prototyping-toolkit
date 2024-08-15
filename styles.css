@@ -10,6 +10,7 @@ body
 	font-family: 'VT323', monospace; */
 	font-family: 'Cabin', sans-serif;
 	font-weight: 100;
+	font-size: 10px;
 }
 
 h1, h2, h3, h4, table.fields th, table.fields td, button, select, input, label, .back-button { 
@@ -39,6 +40,7 @@ footer {
 	font-family: 'VT323', monospace;
 	background-color:yellow;
 	color:#333333;
+	padding-left: 5px;
 }
 
 .book-image { width: 140px;}
@@ -76,6 +78,7 @@ body button,
 	background-color: white;
 	border: 2px solid grey;
 }
+
 
 /* body.screen button {
 	color: #d2b00f;
@@ -252,7 +255,18 @@ button
 	cursor: pointer;
 }
 
-button#generate {
-	margin-top: 10px;
+p.button {
+	margin-top: 16px;
 }
 
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* Minor Tweaks */
+
+h3.roc-header {
+	margin-bottom: 5px;
+}
+h1.roc-header {
+	margin-top: 5px; 
+}

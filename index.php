@@ -5,7 +5,7 @@
 	<title>Tabletop Miniatures Game Prototyping Toolkit</title>
 	<meta name="description" content="Write a new tabletop miniatures game in seconds.">
 	<meta property="og:site_name" content="Fundamentals of Tabletop Miniatures Game Design" />
-	<meta property="og:image" content="" />
+	<meta property="og:image" content="FunTopMockUp260.jpg" />
 	<link href="https://fonts.googleapis.com/css?family=Orbitron|Special+Elite|Quantico|Russo+One|VT323|Roboto" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<link rel="stylesheet" type="text/css" href="styles.css">  
@@ -28,27 +28,27 @@
 <body>
 <div class="container">
 
-<h1>Tabletop Miniatures Game Prototyping Toolkit</h1>
+<h3 class="roc-header">The Rule of Carnage</h3>
+<h1 class="roc-header">Tabletop Miniatures Game Prototyping Toolkit</h1>
 
-<p>Write a new tabletop miniatures game in seconds.</p>
+<p>Write a new tabletop miniatures game in seconds!</p>
+<p class="button" id="generate"><a href="https://planetsmashergames.com/fundamentals/prototyping-toolkit/">Roll up a new game</a></p>
 
-<p style="background-color:yellow;padding:15px"> Note for me and Glenn: the spreadsheet of data is <a href="https://docs.google.com/spreadsheets/d/12iCwt4A3GVowckUjwOw-Uj_-CLjJGkbPc6xL79Z5Xwk/edit#gid=109517467">here</a> (but currently has to be manually loaded into this tool).@Glenn - if you see anything you want to change, head over the spreadsheet.</p>
-
-<p class="button"><a href="https://planetsmashergames.com/fundamentals/prototyping-toolkit/">Roll up a new game</a></p>
-
-<br/><br/><br/>
+<br/>
 <h3>What is this?</h3>
 <div style="float:right;margin:0 0 15px 20px">
 	<a href="https://planetsmashergames.com/fundamentals"><img src="FunTopMockUp260.jpg" class="book-image" /></a>
-	<p class="vsmall" style="text-align:center;" class="book-image"><a href="https://planetsmashergames.com/fundamentals">Buy our book!</a></p>
+	<p class="vsmall" style="text-align:center;" class="book-image"><a href="https://planetsmashergames.com/news/weve-written-a-textbook">Coming Soon!</a></p>
 </div>
-<p>This toolkit is provided partly as a rapid prototyping tool, allowing you to generate the skeleton of a tabletop miniatures game in moments. It also exists to make the point that if a design simply reorganises common mechanical tropes into a new order, it is unlikely to be an effective design. Effective game design tightly integrates its core ideas with mechanics to shape the players' experiences. It builds on the ideas found in our book: <em>The Fundamentals of Tabletop Miniatures Game Design</em>.</p>
-<p>This toolkit doesn’t create interesting games, it creates functional ones. It can be used as a starting point or as an inspiration.</p>
+<p>This toolkit is as a rapid prototyping tool, allowing you to generate the skeleton of a tabletop miniatures game in moments. It also exists to make the point that if a design simply reorganises common mechanical tropes into a new order, it is unlikely to be an effective design. Effective game design tightly integrates its core ideas with mechanics to shape the players' experiences.</p> 
+<p>This toolkit builds on the ideas found in our upcoming book: <a href="https://planetsmashergames.com/news/weve-written-a-textbook">The Fundamentals of Tabletop Miniatures Game Design</a>.</p>
+<p>This toolkit doesn’t create interesting games, it creates functional ones. It can be used as a starting point or as an inspiration. It isn't quite finished yet and will be developed over the next few month.</p>
+<br/>
+
 <h3 class="vsmall" >Public Domain</h3>
 <p class="vsmall" xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">This toolkit <a property="dct:title" rel="cc:attributionURL" href="https://planetsmashergames.com/fundamentals/prototyping-toolkit/">Tabletop Miniatures Game Prototyping Toolkit</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://ruleofcarnage.com">Glenn Ford and Mike Hutchinson</a> is offered in the public domain via <a href="https://creativecommons.org/publicdomain/zero/1.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC0 1.0 Universal<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/zero.svg?ref=chooser-v1" alt=""></a>.  We waive all of our rights to the work worldwide under copyright law, including all related and neighboring rights, to the extent allowed by law.
 You can copy, modify, distribute and perform either the output or the code of this toolkit, even for commercial purposes, with no permission or attribution required. Download the code on <a hre="https://github.com/crikeymiles2/tabletop-miniatures-game-prototyping-toolkit" target="_blank">Github</a>.</p>
 <br/><br/><br/>
-
 
 
 <?php
@@ -68,9 +68,9 @@ function numHash($str, $len=null)
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 
-$number_of_dice_rolls_required = 10;
+$number_of_dice_rolls_required = 15;
 $game_rolls = numHash(time(),$number_of_dice_rolls_required);
-IF (ISSET($_GET['game'])) { $game_rolls = substr($_GET['game'],0,$number_of_dice_rolls_required); }
+IF (ISSET($_GET['seed'])) { $game_rolls = substr($_GET['seed'],0,$number_of_dice_rolls_required); }
 $dice_number = 0;
 
 ?>
@@ -93,11 +93,29 @@ $dice_number = 0;
 ?>
 
 
+<?php
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+//// NAME GENERATOR
+// Get the table files
+$first = file_get_contents('name-generator/first.txt');
+$second = file_get_contents('name-generator/second.txt');
 
+// Here we split it into lines
+$first = explode("\n", $first);
+shuffle($first);
+$second = explode("\n", $second);
+shuffle($second);
 
-<h1>Your new miniatures game is called: #<?php echo $game_rolls; ?></h1>
-<p><a href="https://planetsmashergames.com/fundamentals/prototyping-toolkit/?game=<?php echo $game_rolls; ?>">Bookmark this game</a></p>
+while(strstr($second,$first)) {
+	shuffle($first);
+	shuffle($second);
+}
+?>
 
+<h1>Your new miniatures game is called: <span class="game-name" style="color:crimson;"><?php echo $first[0] . ' ' . $second[0]; ?></span></h1>
+<p>Seed: #<?php echo $game_rolls; ?>. <a href="https://planetsmashergames.com/fundamentals/prototyping-toolkit/?seed=<?php echo $game_rolls; ?>">Bookmark this game</a></p>
+<p class="code">TODO: Make the name fixed for each seed.</p>
 
 <h2>Rules Conventions</h2>
 <ul>
@@ -128,14 +146,11 @@ if ($roll <= 4) {
 } elseif ($roll <= 9) {
 	echo "<p><strong>[Individuals]</strong> Units in this game are single models which activate, move and perform actions individually.</p>";
 } else {	
-	echo '<strong>[Ranked]</strong> Units in this game are models grouped into ranked formations and may not leave them. Models are deployed in blocks at least five columns wide in base contact with the nearest members of the same unit. All models in a Ranked unit are activated with a single activation and perform all actions as a single unit. The unit moves as a single model.</p>';
-	
+	echo '<strong>[Ranked]</strong> Units in this game are models grouped into ranked formations and may not leave them. Models are deployed in blocks at least five columns wide in base contact with the nearest members of the same unit. All models in a Ranked unit are activated with a single activation and perform all actions as a single unit. The unit moves as a single model.</p>';	
 }
-
 ?>
 
 <h2>Stats</h2>
-<p class="code">TODO: Add alternative names for the stats?</p>
 <p>Units in this game are defined by the following stats:</p>
 <ul>
  <li><strong>Speed:</strong> the maximum distance they can travel in a single Move Action</li>
@@ -149,12 +164,21 @@ if ($roll <= 4) {
 
 
 <h2>Resolution Mechanic</h2>
-<p class="code">TODO: Add alternative resolution systems</p>
-<p>When called upon to make a Difficulty [x]+ Stat Test, the unit's controller rolls a number of D6 equal to the named stat. Each dice that rolls equal to or higher than the difficult [x] is a success. The Stat Test is a Success If the controller rolls a one or more successes, else it is a Failure. If not stated, the Difficulty is 4+ (requiring dice rolls of 4+ for successes).</p>
+<?php
+$roll = substr($game_rolls,$dice_number++,1);
+if ($roll <= 3) {
+echo "<p><strong>[Dice Pool]</strong> When called upon to make a Difficulty X [Stat] Test, the unit's controller rolls a number of D6 equal to the named stat. Each dice that rolls 4+ equal is a success. The Stat Test is a Success If the controller rolls a number of successes equal or above that the Difficulty, else it is a Failure.</p>";
+} elseif ($roll <= 7) {
+echo "<p><strong>[Dice Combination]</strong> When called upon to make a Difficulty X [Stat] Test, the unit's controller rolls a 2D6, adds the value of the named stat and subtracts the Difficulty. If the total is more than 10, the Stat Test is a Success, else it is a Failure.</p>";
+} else {	
+echo "<p><strong>[Card Draw]</strong> When called upon to make a Difficulty X [Stat] Test, the unit's draws a card from their personal deck of playing cards and add the value of their named stat and subtracts the Difficulty. If the total is more than 10, the Stat Test is a Success, else it is a Failure. Royal Cards count as 10.</p>";
+}
+?>
 
-<h2>Game Tokens</h2>
-<p>At the start of each turn, each player receives 5 Game Tokens.</p>
-<p>After rolling a Stat Test, if the Stat Test was failed, the rolling player may discard a Game Token to re-roll the Stat Test.</p>
+
+<h2>Re-roll Tokens</h2>
+<p>At the start of each turn, each player receives 5 Re-roll Tokens.</p>
+<p>After rolling a Stat Test, if the Stat Test was failed, the rolling player may discard a Re-roll Token to re-roll the Stat Test.</p>
 
 
 <h2>Line of Sight</h2>
@@ -211,7 +235,6 @@ if ($roll <= 3) {
 		?>
 		<li>End Phase</li>
 	</ol>
-<p class="code">TODO: Add option for phased turns</p>
 
 
 <h2>Initiative</h2>
@@ -337,15 +360,12 @@ if ($roll <= 3) {
 <h3>Example Ranged Actions</h3>
 <p>The following are generic examples of possible Ranged Actions within this system:</p>
 <ul>
-	<li><strong>Handgun:</strong> Range 8". Target suffers 1 wound per success rolled.</li>
-	<li><strong>Shotgun:</strong> Range 4". Target suffers 2 wounds per success rolled.</li>
-	<li><strong>Rifle:</strong> Range 24". Target suffers 1 wound per success rolled.</li>
-	<li><strong>Machine Gun:</strong> Range 24". The attacker adds 5 to their Ranged Skill stat. Target suffers 1 wound per success rolled.</li>
-	<li><strong>Grenade:</strong> Range 4". May target any number of models within 2" of a point on the tabletop. Resolve each attack separately. Target suffers 1 wound per success rolled.</li>
+	<li><strong>Handgun:</strong> Range 8". Target suffers 1 wound.</li>
+	<li><strong>Shotgun:</strong> Range 4". Target suffers 2 wounds.</li>
+	<li><strong>Rifle:</strong> Range 24". Target suffers 1 wound.</li>
+	<li><strong>Machine Gun:</strong> Range 18". The attacker adds 5 to their Ranged Skill stat. Target suffers 1 wound.</li>
+	<li><strong>Grenade:</strong> Range 4". May target any number of models within 2" of a point on the tabletop within range. Resolve each attack separately. Target suffers 2 wound.</li>
 </ul>
-	
-<h3>Damage</h3>
-<p>After an action causes a model to gains one or more wounds: if that model has wounds equal to or above its Wounds stat, it must pass a Difficulty 4+ Morale Test or be removed from play.</p>
 	
 <h2>Close Actions</h2>
 <p>Each Close Action has a <strong>Range</strong>, which is the maximum range of the action. A Range of zero or "-" means the maximum range of the action is base-to-base contact.</p>
@@ -358,8 +378,18 @@ if ($roll <= 3) {
 	<li><strong>Sword:</strong> Range 1". Target suffers 3 wounds per success rolled.</li>
 </ul>
 
-<h3>Damage</h3>
-<p>After an action causes a model to gains one or more wounds: if that model has wounds equal to or above its Wounds stat, it must pass a Difficulty 4+ Morale Test or be removed from play.</p>
+<h2>Damage</h2>
+<?php
+$roll = substr($game_rolls,$dice_number++,1);
+if ($roll <= 3) {
+	echo '<p><strong>[Certain Death]</strong> If a model has wounds equal to or above its Wounds stat, remove it from play.</p>';
+} elseif ($roll <= 6) {
+	echo '<p><strong>[Uncertain Death]</strong> After an action causes a model to gains one or more wounds: if that model has wounds equal to or above its Wounds stat, it must pass a Difficulty 4+ Morale Test or be removed from play.</p>';
+} else {
+	echo '<p><strong>[Doomed]</strong> After an action causes a model to gains one or more wounds: give that model a Doomed Token. In the End Phase it must pass a Difficulty 4+ Morale Test or be removed from play.</p>';
+}
+?>
+
 
 <h2>Special Actions</h2>
 <p>Each Special Action has a <strong>Range</strong>, which is the maximum range of the action. A Range of zero or "-" means the maximum range of the action is base-to-base contact.</p>
@@ -369,23 +399,44 @@ if ($roll <= 3) {
 <ul>
 	<li><strong>Shout:</strong> Range 8". Target makes a Move action, under their controller's control.</li>
 	<li><strong>Interact:</strong> Range 0. Scenario dependant.</li>
-	<li><strong>Patch Up:</strong> Range 0. Target removes 1 wound per success rolled.</li>
+	<li><strong>Patch Up:</strong> Range 0. Target removes 1 wound.</li>
 </ul>
 
 
 <h2>Morale</h2>
-<p class="code">TODO</p>
-<p>When a friendly unit is removed from play within 6" and line of sight of a unit, that unit must make a Difficulty 4+ Morale Test. If they fail it, they must ... TODO</p>
+<?php
+$roll = substr($game_rolls,$dice_number++,1);
+if ($roll <= 5) {
+	echo '<p><strong>[Fleeing]</strong> When a friendly unit is removed from play within 6" and line of sight of a unit, the surviving unit must make a Difficulty 5+ Morale Test. If they fail it, they must make a standard move, ending as far from all enemy units as possible.</p>';
+} else {	
+	echo '<p><strong>[Shaken]</strong> When a friendly unit is removed from play within 6" and line of sight of a unit, the surviving unit must make a Difficulty 5+ Morale Test. If they fail it, they gain a Shaken Token. When a unit with one or more Shaken Tokens is selected to activate, they must make a Difficulty 5+ Morale Test. If they pass it, they discard all Shaken Tokens, if they fail it, their activation ends.</p>';
+}
+?>
 
 
 <h2>Terrain</h2>
-<p class="code">TODO</p>
+
+<p>Terrain can be Difficult or Impassable, and also might be Obscuring or Blocking.  If it has none of these traits, it is Open.</p>
+<ul>
+<li>Open terrain has no effect on the game, other than to look nice. </li> 
+<li>Difficult terrain causes models to move at half speed through it. This might be because it is dense, like a wood or a swamp, or requires climbing, like rubble or a fence.</li> 
+<li>Impassable terrain prevents movement into or across the terrain.</li>
+<li>Obscuring terrain does not block line of sight but increases the Difficulty of a Ranged Action that draws line of sight through this terrain by 1.</li>
+<li>Blocking terrain blocks line of sight into or across the terrain.</li>
+</ul>
+<p>Models count friendly models as Open and enemy models as Blocking and Impassable.</p>
+
+
 
 <h2>Force selection</h2>
 <p class="code">TODO</p>
 
 <h2>Deployment</h2>
-<p class="code">TODO</p>
+<?php
+$roll = substr($game_rolls,$dice_number++,1);
+$roll = ceil($roll/3)+1;
+?>
+<p><strong>Play on a <?php echo $roll; ?>-foot square table.</strong> The winner of a roll-off chooses one table edge as theirs, the opposite table edge becomes their opponent's. Alternate the deployment of units, starting with the winner of the previous roll-off. All units must be deployed within <?php echo $roll/2*4; ?> inches of their controller's table edge.
 
 <h2>Game Length</h2>
 <?php
@@ -401,16 +452,27 @@ if ($roll <= 5) {
 
 
 <h2>Objectives</h2>
-<p class="code">TODO</p>
+<?php
+$roll = substr($game_rolls,$dice_number++,1);
+if ($roll <= 3) {
+	echo '<p><strong>[Points removal]</strong> At the end of the game, count up the point values of the units each player removed, and the most removed wins.</p>';
+} elseif ($roll <= 6) {
+	echo '<p><strong>[Interactive objectives]</strong> Deploy three 30mm markers on the centreline of the board. A unit that succeeds with a Close Action against the marker captures it. At the end of each round, each player scores 1VP for each marker that they currently have captured.</p>';
+} else {
+	echo '<p><strong>[Positional objectives]</strong> Deploy three 30mm markers on the centreline of the board. At the end of each round, the player with the greatest points value of units within 4" of each objective scores 1VP for that objective. If tied, no one scores that objective.</p>';
+}
+?>
 
 <h2>Victory</h2>
-<p>When the game end, the player who has the most victory points is the winner.</p>
+<p>When the game ends, the player who has the most victory points is the winner.</p>
 
 <br/><br/><br/>
 <p class="code">DEBUG: The current number of dice rolls requires is: <?php echo $dice_number; ?></p>
 
+<p style="background-color:yellow;padding:15px"> Note for me and Glenn: the spreadsheet of data is <a href="https://docs.google.com/spreadsheets/d/12iCwt4A3GVowckUjwOw-Uj_-CLjJGkbPc6xL79Z5Xwk/edit#gid=109517467">here</a> (but currently has to be manually loaded into this tool).@Glenn - if you see anything you want to change, head over the spreadsheet.</p>
+
 <footer>
-<p class="vsmall">Version 0.1 (Alpha). Rules text by <a href="https://www.manokentgames.com/">Glenn Ford</a> and <a href="https://planetsmashergames.com">Mike Hutchinson</a>. <a hre="https://github.com/crikeymiles2/tabletop-miniatures-game-prototyping-toolkit" target="_blank">Terrible PHP</a> by Mike. Buy our book, <a href="https://planetsmashergames.com/fundamentals">The Fundamentals of Tabletop Miniatures Game Design</a>.</p>
+<p class="vsmall">Version 0.2 (Alpha). Rules text by <a href="https://www.manokentgames.com/">Glenn Ford</a> and <a href="https://planetsmashergames.com">Mike Hutchinson</a>. <a href="https://github.com/crikeymiles2/tabletop-miniatures-game-prototyping-toolkit" target="_blank">Terrible PHP</a> by Mike. Buy our book, <a href="https://planetsmashergames.com/fundamentals">The Fundamentals of Tabletop Miniatures Game Design</a>.</p>
 </footer>
 
 
